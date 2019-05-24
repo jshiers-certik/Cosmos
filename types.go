@@ -23,3 +23,4 @@ func NewWhois() Whois{
 		Price: MinNamePrice,
 	}
 }
+
