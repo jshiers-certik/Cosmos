@@ -1,9 +1,23 @@
 package nameservice
 
+
+
+//this is the place to define which queries against application state users
+//be able to make. Nameservice module exposes two queries:
+
+//resolve: this takes a name and returns the value stored by nameservice
+
+//whois: takes a name and returns the price, value, and owner of the name. Used
+//for figuring out how much names cost when you want to buy them
+
+
+
 import(
 	"fmt"
 	"strings"
+
 	"github.com/cosmos/comsos-sdk/codec"
+
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/acbi/types"
 
@@ -12,10 +26,10 @@ import(
 const(
 	QueryResolve= "resolve"
 	QueryWhois= "whois"
-	QueryNames="names "
+	QueryNames="names"
 
 )
-
+//will act as a sub-router for queries to this module.
 func NewQuerier(keeper Keeper) sdk.Querier {
 	return func(ctx sdk.Context, path []string, req abci.RequestQuery) (res []byte, err sdk.Error) {
 		switch path[0] {
